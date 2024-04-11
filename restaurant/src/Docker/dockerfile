@@ -1,0 +1,7 @@
+FROM postgres:latest
+
+ENV POSTGRES_DB=restaurantesdb
+ENV POSTGRES_HOST=restaurantesdb.cvpznx9yle9l.us-east-2.rds.amazonaws.com
+ENV POSTGRES_PORT=5432
+ENV POSTGRES_USER=postgres
+ENV POSTGRES_PASSWORD=123456789
