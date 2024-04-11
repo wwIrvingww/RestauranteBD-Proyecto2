@@ -48,7 +48,7 @@ const appPages: AppPage[] = [
   },
   {
     title: 'Comidas',
-    url: '/folder/Trash',
+    url: '/folder/Comidas',
     iosIcon: trashOutline,
     mdIcon: trashSharp
   },
