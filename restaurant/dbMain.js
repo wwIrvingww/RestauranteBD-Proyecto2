@@ -1,33 +1,25 @@
-const express = require('express');
-const { Pool } = require('pg');
+import { Client } from 'pg';
 
-const app = express();
-const port = 3001;
-
-const pool = new Pool({
-  user: 'postgres',
-  host: 'restaurantesdb.cvpznx9yle9l.us-east-2.rds.amazonaws.com',
-  database: 'restaurantesdb',
-  password: '123456789',
+// Configuración de la conexión a la base de datos
+const client = new Client({
+  user: 'tu_usuario',
+  host: 'tu_host',
+  database: 'tu_base_de_datos',
+  password: 'tu_contraseña',
   port: 5432, // Puerto predeterminado de PostgreSQL
 });
 
-app.get('/datos', async (req, res) => {
-  try {
-    const client = await pool.connect();
-    const result = await client.query('SELECT * FROM ordenes');
-    res.json(result.rows);
-    client.release();
-  } catch (err) {
-    console.error('Error al obtener datos', err);
-    res.status(500).json({ error: 'Error al obtener datos' });
+// Conectar a la base de datos
+client.connect();
+
+// Ejecutar una consulta
+client.query('SELECT * FROM tu_tabla', (err, res) => {
+  if (err) {
+    console.error('Error al ejecutar consulta', err);
+    return;
   }
+  console.log('Datos:', res.rows);
 });
 
-app.get('/' , async (req, res) => {
-  res.send('Hola')
-})
-
-app.listen(port, () => {
-  console.log(`Servidor backend escuchando en http://localhost:${port}`);
-});
+// Cerrar la conexión cuando hayas terminado
+client.end();
