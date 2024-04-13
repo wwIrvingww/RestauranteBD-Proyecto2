@@ -21,31 +21,8 @@ interface AppPage {
   title: string;
 }
 
+//Acá modificas las url
 const appPages: AppPage[] = [
-  {
-    title: 'Inbox',
-    url: '/folder/Inbox',
-    iosIcon: mailOutline,
-    mdIcon: mailSharp
-  },
-  {
-    title: 'Outbox',
-    url: '/folder/Outbox',
-    iosIcon: paperPlaneOutline,
-    mdIcon: paperPlaneSharp
-  },
-  {
-    title: 'Favorites',
-    url: '/folder/Favorites',
-    iosIcon: heartOutline,
-    mdIcon: heartSharp
-  },
-  {
-    title: 'Archived',
-    url: '/folder/Archived',
-    iosIcon: archiveOutline,
-    mdIcon: archiveSharp
-  },
   {
     title: 'Comidas',
     url: '/folder/Comidas',
@@ -54,7 +31,7 @@ const appPages: AppPage[] = [
   },
   {
     title: 'Bebidas',
-    url: '/folder/Spam',
+    url: '/folder/Bebidas',
     iosIcon: warningOutline,
     mdIcon: warningSharp
   }
@@ -69,8 +46,10 @@ const Menu: React.FC = () => {
     <IonMenu contentId="main" type="overlay">
       <IonContent>
         <IonList id="inbox-list">
-          <IonListHeader>Inbox</IonListHeader>
-          <IonNote>hi@ionicframework.com</IonNote>
+          <div>
+            <IonListHeader>Inbox</IonListHeader>
+            <IonNote>hi@ionicframework.com</IonNote>
+          </div>
           {appPages.map((appPage, index) => {
             return (
               <IonMenuToggle key={index} autoHide={false}>
