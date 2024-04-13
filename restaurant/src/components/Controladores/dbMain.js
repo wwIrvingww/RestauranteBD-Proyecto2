@@ -1,5 +1,5 @@
 import express from 'express'
-import {getUsers}  from './db.js'
+import {getUsers, getquejaporcomida, getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato}  from './db.js'
 
 const app = express()
 const port = 4000
@@ -28,3 +28,124 @@ app.get('/usuario', async (req, res) => {
 })
 
 
+
+app.get('/cpedidos', async (req, res) => {
+
+  try{
+    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const users = await cantpedidos( fechainicio, fechafinal)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
+
+app.get('/gqueja', async (req, res) => {
+
+  try{
+    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const users = await getquejaporcomida( fechainicio, fechafinal)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
+app.get('/listplat', async (req, res) => {
+
+  try{
+    const users = await listadoplato()
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
+app.get('/listbebidas', async (req, res) => {
+
+  try{
+    const users = await listadobeb()
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
+// #Prince
+
+app.get('/report_1', async (req, res) => {
+
+  try{
+    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const users = await getreporte( fechainicio, fechafinal)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+app.get('/report_4', async (req, res) => {
+
+  try{
+    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const users = await getreporteperso( fechainicio, fechafinal)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
+app.get('/get_areas', async (req, res) => {
+
+  try{
+    const users = await getarea()
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
+
+app.get('/get_mesas_area/:id', async (req, res) => {
+
+  const {id} = req.params
+
+  try{
+    const users = await get_mesas_area(id)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+// tiempo de Andre
+
+app.get('/eattime', async (req, res) => {
+
+  try{
+    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const users = await eatingtime( fechainicio, fechafinal)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
+app.get('/meficiency', async (req, res) => {
+
+  try{
+    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const users = await mesereficiencia( fechainicio, fechafinal)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
