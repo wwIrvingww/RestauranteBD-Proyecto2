@@ -2,14 +2,23 @@ import { IonButton, IonIcon } from "@ionic/react"
 import { chevronBackOutline } from "ionicons/icons"
 
 interface ContainerProps { 
-    area : string,
-    setArea: (area : string) => void
+    areaList : string[],
+    index: number,
+    setArea: (area : string) => void,
+    setIndex: (index: number) => void
  }
 
-const ButtonLeft : React.FC<ContainerProps> = ({area, setArea}) => {
+const ButtonLeft : React.FC<ContainerProps> = ({areaList, index, setArea, setIndex}) => {
 
     const HandleClick = () => {
-        setArea('Salón VIP')
+        setIndex(index - 1) 
+
+        if (index <= 0) {
+            setIndex(2)
+        }
+
+        console.log(index % 3)
+        setArea(areaList[index % 3])
     }
 
     return (

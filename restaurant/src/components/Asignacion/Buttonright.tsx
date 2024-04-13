@@ -2,11 +2,12 @@ import { IonButton, IonIcon } from "@ionic/react"
 import { chevronForward } from "ionicons/icons"
 
 interface ContainerProps { 
-    area : string,
+    areaList : string[],
+    index: number,
     setArea: (area : string) => void
  }
 
-const ButtonRight : React.FC<ContainerProps> = ({area, setArea}) => {
+const ButtonRight : React.FC<ContainerProps> = ({areaList, index, setArea}) => {
 
     const HandleClick = () => {
         setArea('Salón Principal')

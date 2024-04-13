@@ -8,21 +8,28 @@ import { getAreas } from '../Controladores/controller'
 interface ContainerProps {  }
 
 const Selector: React.FC<ContainerProps> = () => {
-
-    let areaList: string[] = []
+    
+    const [area, setArea] = useState('')
+    const [index, setIndex] = useState(0)
+    const [areaList, setAreaList] = useState<string[]>([])
 
     useEffect(() => {
         const fetchData = async () => {
-          const areas = await getAreas()
-          areaList = areas.map((area: { nombre: string }) => area.nombre)
-          setArea(areaList[0])
-          console.log(areaList)
+            try {
+                const areas = await getAreas()
+                setAreaList(areas.map((area: { nombre: string }) => area.nombre))
+            } catch (error) {
+                console.error('Error fetching areas:', error)
+            }
         };
     
         fetchData()
       }, []);
 
-    const [area, setArea] = useState('')
+      useEffect(() => {
+        setArea(areaList[index])
+      }, [areaList, index])
+
 
     return (
         <>
@@ -30,9 +37,9 @@ const Selector: React.FC<ContainerProps> = () => {
                 display: 'flex',
                 justifyContent: 'space-between'
             }}>
-                <ButtonLeft area={area} setArea={setArea}/>
+                <ButtonLeft areaList={areaList} index={index} setArea={setArea} setIndex={setIndex}/>
                 <AreaName name={area} />
-                <ButtonRight area={area} setArea={setArea}/>
+                <ButtonRight areaList={areaList} index={index} setArea={setArea}/>
             </IonCard>
         </>
     )
