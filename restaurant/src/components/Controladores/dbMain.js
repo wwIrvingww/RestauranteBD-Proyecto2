@@ -1,11 +1,16 @@
 import express from 'express'
+import cors from 'cors'
 import {getUsers, getquejaporcomida, getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato}  from './db.js'
 
 const app = express()
 const port = 4000
 
-
 app.use(express.json())
+app.use(cors({
+  origin: '*',
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type'],
+}))
 
 
 app.listen(port, () => {
