@@ -152,3 +152,18 @@ export async function eatingtime(fechainicio, fechafinal) {
     }
 }
 
+
+export async function estadoorden(estado, numberorder) {
+
+    try {
+        const result = await client.query(
+            `update ordenes set estado = ${estado}  where no = ${numberorder} `
+            )
+        return result.rows
+    } catch (err) {
+        throw err
+    }
+}
+
+
+

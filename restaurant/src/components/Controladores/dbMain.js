@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import {getUsers, getquejaporcomida, getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato}  from './db.js'
+import {getUsers, getquejaporcomida,estadoorden ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato}  from './db.js'
 
 const app = express()
 const port = 4000
@@ -149,6 +149,17 @@ app.get('/meficiency', async (req, res) => {
   try{
     const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
     const users = await mesereficiencia( fechainicio, fechafinal)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+app.put('/estadorden', async (req, res) => {
+
+  try{
+    const [ estado, numberorder ] = [req.body.estado, req.body.numberorder]
+    const users = await estadoorden( estado, numberorder)
     res.json(users)
   } catch(err){
     throw err
