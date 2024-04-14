@@ -10,8 +10,7 @@ const Router: React.FC<ContainerProps> = ({ name }) => {
 
   if (name =='Comidas'){
     return (
-      'hola'
-      // <Parairving />
+      <Parairving />
     ) 
   } else if (name == 'Asignación'){
     return (

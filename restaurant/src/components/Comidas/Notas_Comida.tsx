@@ -1,6 +1,8 @@
+// En Notas_Comida.tsx
 import React from 'react';
 import { IonButton } from '@ionic/react';
 import './Notas_Comida.css';
+import { changeStatrOrder } from '../Controladores/controller'// Importa la función desde el controlador
 
 interface Elemento {
   titulo: string;
@@ -10,10 +12,17 @@ interface Elemento {
 
 interface Props {
   elementos: Elemento[];
-  onClickButton: () => void; // Tipo de la función onClickButton
 }
 
-function Notas_Comida({ elementos, onClickButton }: Props) {
+function Notas_Comida({ elementos }: Props) {
+  const handleClick = async (numberorder: string) => {
+    try {
+      await changeStatrOrder(numberorder); // Llama a la función changeStatrOrder con el número de orden
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  };
+
   return (
     <div className="main">
       <ul className="cards">
@@ -27,7 +36,7 @@ function Notas_Comida({ elementos, onClickButton }: Props) {
                   <p><strong>Hora:</strong> {elemento.hora}</p>
                 </div>
               </div>
-              <IonButton expand="block" onClick={onClickButton}>Listo</IonButton>
+              <IonButton expand="block" onClick={() => handleClick(elemento.orden)}>Listo</IonButton>
             </div>
           </li>
         ))}
