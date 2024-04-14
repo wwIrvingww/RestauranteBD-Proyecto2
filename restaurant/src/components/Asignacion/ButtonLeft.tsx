@@ -17,8 +17,7 @@ const ButtonLeft : React.FC<ContainerProps> = ({areaList, index, setArea, setInd
             setIndex(2)
         }
 
-        console.log(index % 3)
-        setArea(areaList[index % 3])
+        setArea(areaList[index])
     }
 
     return (

@@ -39,7 +39,7 @@ const Selector: React.FC<ContainerProps> = () => {
             }}>
                 <ButtonLeft areaList={areaList} index={index} setArea={setArea} setIndex={setIndex}/>
                 <AreaName name={area} />
-                <ButtonRight areaList={areaList} index={index} setArea={setArea}/>
+                <ButtonRight areaList={areaList} index={index} setArea={setArea} setIndex={setIndex}/>
             </IonCard>
         </>
     )
