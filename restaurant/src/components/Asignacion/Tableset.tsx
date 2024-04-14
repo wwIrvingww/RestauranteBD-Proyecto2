@@ -1,5 +1,6 @@
 import Principalset from "./Principalset"
 import Terrazaset from "./Terrazaset"
+import VIPset from "./VIPset"
 
 interface ContainerProps { area: string }
 
@@ -7,8 +8,7 @@ const Tableset: React.FC<ContainerProps> = ({area}) => {
     
     if (area == 'Terraza') {
         return (
-            // <Terrazaset />
-            'a'
+            <Terrazaset />
         )
     } else if (area == 'Salón Principal') {
         return (
@@ -16,7 +16,9 @@ const Tableset: React.FC<ContainerProps> = ({area}) => {
             
         )
     } else if (area == 'Sala VIP') {
-        return 'b'
+        return (
+            <VIPset />
+        )
     }
 }
 

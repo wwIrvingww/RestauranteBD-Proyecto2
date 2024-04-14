@@ -6,6 +6,7 @@
 .centerColumn {
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .mesa4 {
@@ -16,8 +17,8 @@
 }
 
 .mesa2 {
-    width: 100px;
-    height: 200px;
+    width: 150px;
+    height: 150px;
     background-color: gray;
     margin: 10px;
 }
