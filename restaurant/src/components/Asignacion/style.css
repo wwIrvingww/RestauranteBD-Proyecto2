@@ -14,18 +14,34 @@
     height: 200px;
     background-color: gray;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
 .mesa2 {
-    width: 150px;
-    height: 150px;
-    background-color: gray;
-    margin: 10px;
-}
-
-.mesa6 {
-    width: 300px;
+    width: 100px;
     height: 200px;
     background-color: gray;
     margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.mesa6 {
+    width: 400px;
+    height: 200px;
+    background-color: gray;
+    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+p {
+    margin: 0;
 }

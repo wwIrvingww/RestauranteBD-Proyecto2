@@ -110,11 +110,11 @@ export async function getarea() {
 }
 
 
-export async function get_mesas_area(id) {
+export async function get_mesas_area(area) {
 
     try {
         const result = await client.query(
-            `select id, movable , capacidad  from mesas m  where table_area = '${id}' ;`
+            `select id, movable , capacidad  from mesas m  where table_area = '${area}' ;`
         )
         return result.rows
     } catch (err) {

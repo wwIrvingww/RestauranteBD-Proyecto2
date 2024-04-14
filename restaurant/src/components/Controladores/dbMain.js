@@ -118,12 +118,12 @@ app.get('/get_areas', async (req, res) => {
 
 
 
-app.get('/get_mesas_area/:id', async (req, res) => {
+app.get('/get_mesas_area/:area', async (req, res) => {
 
-  const {id} = req.params
+  const {area} = req.params
 
   try{
-    const users = await get_mesas_area(id)
+    const users = await get_mesas_area(area)
     res.json(users)
   } catch(err){
     throw err
