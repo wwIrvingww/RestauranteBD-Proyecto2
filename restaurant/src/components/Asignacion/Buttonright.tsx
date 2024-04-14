@@ -13,8 +13,11 @@ const ButtonRight : React.FC<ContainerProps> = ({areaList, index, setArea, setIn
     const HandleClick = () => {
         setIndex(index + 1) 
 
-        console.log(index % 3)
-        setArea(areaList[index % 3])
+        if (index >= 2) {
+            setIndex(0)
+        }
+
+        setArea(areaList[index])
     }
 
     return (

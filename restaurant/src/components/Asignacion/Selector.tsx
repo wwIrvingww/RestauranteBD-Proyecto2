@@ -5,11 +5,14 @@ import AreaName from "./AreaName"
 import ButtonRight from "./Buttonright"
 import { getAreas } from '../Controladores/controller'
 
-interface ContainerProps {  }
+interface ContainerProps { 
+    area : string,
+    setArea: (area : string) => void
+ }
 
-const Selector: React.FC<ContainerProps> = () => {
+const Selector: React.FC<ContainerProps> = ({area, setArea}) => {
     
-    const [area, setArea] = useState('')
+    
     const [index, setIndex] = useState(0)
     const [areaList, setAreaList] = useState<string[]>([])
 
