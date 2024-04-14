@@ -16,6 +16,20 @@ export  {
     getAreas
 }
 
+export async function getComidas() {
+    const comidas = await fetch('http://127.0.0.1:4000/listplat',
+    {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+
+    })
+
+    const listacomidas = await comidas.json ()
+    return comidas    
+}
+
 
 export async function changeStatrOrder(numberorder: string) {
     try {
