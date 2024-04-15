@@ -1,6 +1,6 @@
 import express from 'express'
 import cors from 'cors'
-import {getUsers, getquejaporcomida,estadoorden ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato}  from './db.js'
+import {getUsers, getquejaporcomida, registrar ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato}  from './db.js'
 
 const app = express()
 const port = 4000
@@ -165,3 +165,29 @@ app.put('/estadorden', async (req, res) => {
     throw err
   }
 })
+
+
+
+app.post('/register', async (req, res) => {
+
+  try{
+    const [ nombre, contrasenia, rol ] = [req.body.nombre, req.body.contrasenia, req.body.rol]
+    const users = await registrar( nombre, contrasenia, rol)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
+
+app.get('/searchuser', async (req, res) => {
+
+  try{
+    const users = await buscarusuario()
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+

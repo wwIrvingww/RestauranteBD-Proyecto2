@@ -6,19 +6,13 @@ import './button.css';
 
 interface ContainerProps { 
     setPassword : (password: string) => void,
-    validatePassword : Boolean,
-    setValidatePassword : (validatePassword : boolean) => void
 }
 
-const PasswordInput: React.FC<ContainerProps> = ({ setPassword, validatePassword, setValidatePassword }) => {
+const PasswordInput: React.FC<ContainerProps> = ({ setPassword }) => {
     const [showPassword, setShowPassword] = useState(false);
     const [showIcon, setShowIcon] = useState(false);
 
     const [isTouched, setIsTouched] = useState(false)
-
-    const validate = (value: string) => {            
-        value !== '' ? setValidatePassword(true) : setValidatePassword(false);
-    }
 
     const markTouched = () => {
         setIsTouched(true);
@@ -44,10 +38,10 @@ const PasswordInput: React.FC<ContainerProps> = ({ setPassword, validatePassword
             labelPlacement={showIcon ? 'stacked' : 'floating'}
             fill='outline'
             placeholder='Ingresar contraseña'
-            className={`${'inputs'}  ${isTouched && 'ion-touched'}`}
+            className={`${'inputs'} ${isTouched && 'ion-touched'}`}
             color='tertiary'
             errorText="Contraseña inválida"
-            onIonBlur={(event) => { markTouched(); validate((event.target as unknown as HTMLInputElement).value); }} // Ejecuta markTouched() y validate() cuando se desenfoca
+            onIonBlur={() => { markTouched(); }} // Ejecuta markTouched() y validate() cuando se desenfoca
             onFocus={handleFocus}
             onIonChange={handleInputChange}
         >
