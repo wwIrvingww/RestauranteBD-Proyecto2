@@ -6,10 +6,20 @@ import { getMesas } from "../Controladores/controller";
 
 interface ContainerProps { 
     showButton: number;
-    setShowButton: (showButton: number) => void
+    setShowButton: (showButton: number) => void;
+    myTables: Array<{
+        id: number,
+        movable: boolean,
+        capacidad: number
+    }>,
+    setMyTables: (myTables: Array<{
+        id: number,
+        movable: boolean,
+        capacidad: number
+    }>) => void
 }
 
-const Principalset: React.FC<ContainerProps> = ({showButton, setShowButton}) => {
+const Principalset: React.FC<ContainerProps> = ({showButton, setShowButton, myTables, setMyTables}) => {
 
     const [mesasInfo, setMesasInfo] = useState([]);
 
@@ -36,35 +46,89 @@ const Principalset: React.FC<ContainerProps> = ({showButton, setShowButton}) => 
         <IonGrid fixed={true}>
                 <IonRow>
                     <IonCol className="centerColumn">
-                        <Mesa4 mesaInfo={mesasInfo[0]} showButton={showButton} setShowButton={setShowButton}/>
+                        <Mesa4 
+                            mesaInfo={mesasInfo[0]} 
+                            showButton={showButton} 
+                            setShowButton={setShowButton} 
+                            myTables={myTables}
+                            setMyTables={setMyTables}
+                        />
                     </IonCol>
                     <IonCol className="centerColumn">
-                        <Mesa4 mesaInfo={mesasInfo[1]} showButton={showButton} setShowButton={setShowButton}/>
+                        <Mesa4 
+                            mesaInfo={mesasInfo[1]} 
+                            showButton={showButton} 
+                            setShowButton={setShowButton} 
+                            myTables={myTables}
+                            setMyTables={setMyTables}
+                        />
                     </IonCol>
                     <IonCol className="centerColumn">
-                        <Mesa4 mesaInfo={mesasInfo[2]} showButton={showButton} setShowButton={setShowButton}/>
+                        <Mesa4 
+                            mesaInfo={mesasInfo[2]} 
+                            showButton={showButton} 
+                            setShowButton={setShowButton} 
+                            myTables={myTables}
+                            setMyTables={setMyTables}
+                        />
                     </IonCol>
                 </IonRow>
                 <IonRow>
                     <IonCol className="centerColumn">
-                        <Mesa4 mesaInfo={mesasInfo[3]} showButton={showButton} setShowButton={setShowButton}/>
+                        <Mesa4 
+                            mesaInfo={mesasInfo[3]} 
+                            showButton={showButton} 
+                            setShowButton={setShowButton} 
+                            myTables={myTables}
+                            setMyTables={setMyTables}
+                        />
                     </IonCol>
                     <IonCol className="centerColumn">
-                        <Mesa4 mesaInfo={mesasInfo[4]} showButton={showButton} setShowButton={setShowButton}/>
+                        <Mesa4 
+                            mesaInfo={mesasInfo[4]}     
+                            showButton={showButton} 
+                            setShowButton={setShowButton} 
+                            myTables={myTables}
+                            setMyTables={setMyTables}
+                        />
                     </IonCol>
                     <IonCol className="centerColumn">
-                        <Mesa4 mesaInfo={mesasInfo[5]} showButton={showButton} setShowButton={setShowButton}/>
+                        <Mesa4 
+                            mesaInfo={mesasInfo[5]} 
+                            showButton={showButton} 
+                            setShowButton={setShowButton} 
+                            myTables={myTables}
+                            setMyTables={setMyTables}
+                        />
                     </IonCol>
                 </IonRow>
                 <IonRow>
                     <IonCol className="centerColumn">
-                        <Mesa4 mesaInfo={mesasInfo[6]} showButton={showButton} setShowButton={setShowButton}/>
+                        <Mesa4 
+                            mesaInfo={mesasInfo[6]} 
+                            showButton={showButton} 
+                            setShowButton={setShowButton} 
+                            myTables={myTables}
+                            setMyTables={setMyTables}
+                        />
                     </IonCol>
                     <IonCol className="centerColumn">
-                        <Mesa4 mesaInfo={mesasInfo[7]} showButton={showButton} setShowButton={setShowButton}/>
+                        <Mesa4 
+                            mesaInfo={mesasInfo[7]} 
+                            showButton={showButton} 
+                            setShowButton={setShowButton} 
+                            myTables={myTables}
+                            setMyTables={setMyTables}
+                        />
                     </IonCol>
                     <IonCol className="centerColumn">
-                        <Mesa4 mesaInfo={mesasInfo[8]} showButton={showButton} setShowButton={setShowButton}/>
+                        <Mesa4 
+                            mesaInfo={mesasInfo[8]} 
+                            showButton={showButton} 
+                            setShowButton={setShowButton} 
+                            myTables={myTables}
+                            setMyTables={setMyTables}
+                        />
                     </IonCol>
                 </IonRow>
             </IonGrid>
