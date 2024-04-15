@@ -1,6 +1,7 @@
 import './ExploreContainer.css';
 import Parairving from '../Views/Parairving';
 import Asignacion from '../Views/Asignacion';
+import Reportes from '../Views/Reportes';
 
 interface ContainerProps {
   name: string;
@@ -15,6 +16,10 @@ const Router: React.FC<ContainerProps> = ({ name }) => {
   } else if (name == 'Asignación'){
     return (
       <Asignacion />
+    )
+  } else if (name == 'Reportes'){
+    return (
+      <Reportes />
     )
   }
 };
