@@ -61,6 +61,12 @@ const appPages: AppPage[] = [
     mdIcon: checkboxOutline
   },
   {
+    title: 'Encuestas',
+    url: '/folder/encuestas',
+    iosIcon: checkboxOutline,
+    mdIcon: checkboxOutline
+  },
+  {
     title: 'Facturas',
     url: '/folder/facturas',
     iosIcon: documentLockOutline,

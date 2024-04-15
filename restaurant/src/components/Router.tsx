@@ -6,6 +6,7 @@ import Reportes from '../Views/Reportes';
 import Cunetas from '../Views/Cunetas';
 import Bebidas from '../Views/Bebidas';
 import Factura from '../Views/Factura'
+import Encuestas from '../Views/Encuestas';
 
 interface ContainerProps {
   name: string;
@@ -43,6 +44,11 @@ const Router: React.FC<ContainerProps> = ({ name }) => {
   else if (name == 'facturas'){
     return (
       <Factura />
+    )
+  }
+  else if (name == 'encuestas'){
+    return (
+      <Encuestas />
     )
   }
 };
