@@ -71,6 +71,12 @@ const appPages: AppPage[] = [
     url: '/folder/facturas',
     iosIcon: documentLockOutline,
     mdIcon: documentLockOutline
+  },
+  {
+    title: 'Quejas',
+    url: '/folder/quejas',
+    iosIcon: documentLockOutline,
+    mdIcon: documentLockOutline
   }
 ];
 
