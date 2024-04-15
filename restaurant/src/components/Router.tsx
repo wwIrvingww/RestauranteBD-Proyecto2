@@ -1,12 +1,9 @@
 import './ExploreContainer.css';
 import Parairving from '../Views/Parairving';
 import Asignacion from '../Views/Asignacion';
-<<<<<<< HEAD
 import Pedido from '../Views/Pedido'
-=======
 import Reportes from '../Views/Reportes';
 import Bebidas from '../Views/Bebidas';
->>>>>>> 822fae0457d2c7010b5b88186e38d83a599e5179
 
 interface ContainerProps {
   name: string;
