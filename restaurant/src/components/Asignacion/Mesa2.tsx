@@ -8,10 +8,20 @@ interface ContainerProps {
         capacidad: number;
     },
     showButton: number,
-    setShowButton: (showButton: number) => void
+    setShowButton: (showButton: number) => void;
+    myTables: Array<{
+        id: number,
+        movable: boolean,
+        capacidad: number
+    }>,
+    setMyTables: (myTables: Array<{
+        id: number,
+        movable: boolean,
+        capacidad: number
+    }>) => void
 }
 
-const Mesa2: React.FC<ContainerProps> = ({mesaInfo, showButton,setShowButton}) => {
+const Mesa2: React.FC<ContainerProps> = ({mesaInfo, showButton,setShowButton, myTables, setMyTables}) => {
     const [id, setId] = useState(0)
     const [cap, setCap] = useState(0) 
     const [color, setColor] = useState(0)
@@ -45,6 +55,8 @@ const Mesa2: React.FC<ContainerProps> = ({mesaInfo, showButton,setShowButton}) =
             setPermission(false)
             setColor(3)
             setClick(true)
+            myTables.push(mesaInfo)
+            setMyTables(myTables)
         } else {
             setShowButton(showButton-1)
             setPermission(true)
