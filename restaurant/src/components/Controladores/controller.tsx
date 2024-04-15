@@ -145,32 +145,30 @@ export async function platosmaspedidos(fechainicio: string, fechafinal: string) 
     } catch (error) {
         throw error;
     }
-  }
+}
   
 
-  export async function Horarioconmasdemanda(fechainicio: string, fechafinal: string) {
+export async function Horarioconmasdemanda(fechainicio: string, fechafinal: string) {
     try {
-        const response = await fetch('http://127.0.0.1:4000/cpedidos', {
+        const url = `http://127.0.0.1:4000/cpedidos?fechainicio=${fechainicio}&fechafinal=${fechafinal}`;
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                fechainicio: fechafinal,
-                fechafinal: fechainicio
-            })
+            }
         });
-  
+
         if (!response.ok) {
             throw new Error('Oops no data');
         }
-  
+
         const data = await response.json();
         return data;
     } catch (error) {
         throw error;
     }
-  }
+}
+
   
   export async function mefeciency(fechainicio: string, fechafinal: string) {
     try {

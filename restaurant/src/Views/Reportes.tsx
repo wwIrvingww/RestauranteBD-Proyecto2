@@ -1,7 +1,11 @@
-interface ContainerProps {  }
+import Buttons from "../components/Reportes/Buttons"
 
-const Reportes: React.FC<ContainerProps> = () => {
-    return 'j'
+function Reportes() {
+    return (
+        <div>
+          <Buttons/>
+        </div>
+    )
 }
 
 export default Reportes
