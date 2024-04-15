@@ -46,7 +46,8 @@ async function createCuenta(fecha_cuenta: string, hora_inicio: string, mesa_id: 
         fecha_cuenta: fecha_cuenta,
         hora_inicio: hora_inicio,
         mesa_id: mesa_id,
-        cantidad_persons: cantidadPersonas
+        cantidad_persons: cantidadPersonas,
+        abierta: "true"
     }
     
     const data = await fetch('http://127.0.0.1:4000/cuenta',
@@ -59,12 +60,47 @@ async function createCuenta(fecha_cuenta: string, hora_inicio: string, mesa_id: 
     })
 }
 
+async function obtainCuentas() {
+    const data = await fetch(`http://127.0.0.1:4000/cuentas`,
+    {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    const cuentas = await data.json()
+    return cuentas
+}
+
+async function closeCuenta(nombre: string, nit: string, direccion: string, mesa_id: number, hora_fin: string) {
+    const object = {
+        nombre: nombre,
+        nit: nit,
+        direccion: direccion,
+        abierta: "false",
+        mesa_id: mesa_id,
+        hora_fin: hora_fin
+    }
+    
+    const data = await fetch('http://127.0.0.1:4000/cuenta/cerrar',
+    {
+        method: 'PUT',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(object)
+    })
+}
+
 export  {
 
     getAreas,
     getMesas,
     makeUnion,
-    createCuenta
+    createCuenta,
+    obtainCuentas,
+    closeCuenta
 }
 
 
@@ -145,32 +181,30 @@ export async function platosmaspedidos(fechainicio: string, fechafinal: string) 
     } catch (error) {
         throw error;
     }
-  }
+}
   
 
-  export async function Horarioconmasdemanda(fechainicio: string, fechafinal: string) {
+export async function Horarioconmasdemanda(fechainicio: string, fechafinal: string) {
     try {
-        const response = await fetch('http://127.0.0.1:4000/cpedidos', {
+        const url = `http://127.0.0.1:4000/cpedidos?fechainicio=${fechainicio}&fechafinal=${fechafinal}`;
+        const response = await fetch(url, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                fechainicio: fechafinal,
-                fechafinal: fechainicio
-            })
+            }
         });
-  
+
         if (!response.ok) {
             throw new Error('Oops no data');
         }
-  
+
         const data = await response.json();
         return data;
     } catch (error) {
         throw error;
     }
-  }
+}
+
   
   export async function mefeciency(fechainicio: string, fechafinal: string) {
     try {

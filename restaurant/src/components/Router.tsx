@@ -3,6 +3,7 @@ import Parairving from '../Views/Parairving';
 import Asignacion from '../Views/Asignacion';
 import Pedido from '../Views/Pedido'
 import Reportes from '../Views/Reportes';
+import Cunetas from '../Views/Cunetas';
 import Bebidas from '../Views/Bebidas';
 import Factura from '../Views/Factura'
 
@@ -23,6 +24,10 @@ const Router: React.FC<ContainerProps> = ({ name }) => {
   } else if (name == 'Reportes'){
     return (
       <Reportes />
+    ) 
+  } else if (name == 'Cuentas'){
+    return (
+      <Cunetas />
     )
   }
   else if (name == 'Bebidas'){

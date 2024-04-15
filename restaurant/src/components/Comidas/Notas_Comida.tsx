@@ -51,7 +51,6 @@ function Notas_Comida({ elementos }: Props) {
                   <p><strong>Hora:</strong> {elemento.time}</p>
                 </div>
               </div>
-              <IonButton expand="block" onClick={() => handleClick(elemento.orden)}>Listo</IonButton>
             </div>
           </li>
         ))}

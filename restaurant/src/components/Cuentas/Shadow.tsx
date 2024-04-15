@@ -1,5 +1,4 @@
-import ContentA from './ContentA'
-import './style.css'
+import '../Asignacion/style.css'
 
 interface ContainerProps {  }
 
