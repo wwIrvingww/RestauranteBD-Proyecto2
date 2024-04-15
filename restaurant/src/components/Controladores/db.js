@@ -190,3 +190,15 @@ export async function buscarusuario() {
         throw err
     }
 }
+
+
+export async function buscarped(id) {
+
+    try {
+        const result = await client.query(
+            `select cuenta_id, alimento, descripcion, unitprice  from cuenta left join ordenes on id  = cuenta_id left join alimentos on alimento = alimentos.nombre  where cuenta_id = '${id}' `)
+        return result.rows
+    } catch (err) {
+        throw err
+    }
+}
