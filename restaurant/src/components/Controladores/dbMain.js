@@ -1,7 +1,7 @@
 import express, { query } from 'express'
 import cors from 'cors'
 
-import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta }  from './db.js'
+import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes }  from './db.js'
 
 const app = express()
 const port = 4000
@@ -184,7 +184,7 @@ app.post('/cuenta', async (req, res) => {
   const {
       fecha_cuenta, hora_inicio, mesa_id, cantidad_persons, abierta
   } = req.body;
-  if (!fecha_cuenta || !hora_inicio || !mesa_id || !cantidad_persons || abierta === undefined) {
+  if (!fecha_cuenta || !hora_inicio || !mesa_id || !cantidad_persons || !abierta ) {
       res.status(400).json({ error: 'Datos incompletos en el cuerpo de la solicitud' });
   } else {
       await createCuenta(fecha_cuenta, hora_inicio, mesa_id, cantidad_persons, abierta);
@@ -213,6 +213,35 @@ app.put('/cuenta/cerrar', async (req, res) => {
   }
 })
 
+app.get('/comida', async (req, res) => {
+  try {
+    const comida = await obtainComida()
+    res.json(comida)
+  } catch (err) {
+    res.status(500).json({ error: 'Error interno del servidor' })
+  }
+})
+
+app.get('/bebida', async (req, res) => {
+  try {
+    const bebida = await obtainBebidas()
+    res.json(bebida)
+  } catch (err) {
+    res.status(500).json({ error: 'Error interno del servidor' })
+  }
+})
+
+app.post('/newOrder', async (req, res) => {
+  const {
+    nombre, estado, time
+  } = req.body;
+  if (!nombre || !estado || !time ) {
+      res.status(400).json({ error: 'Datos incompletos en el cuerpo de la solicitud' });
+  } else {
+      await setOrdenes(nombre, estado, time);
+      res.status(200).json({message: 'Orden creada exitosamente'});
+  }
+})
 
 app.post('/register', async (req, res) => {
 
