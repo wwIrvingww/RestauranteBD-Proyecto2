@@ -4,6 +4,7 @@ import Asignacion from '../Views/Asignacion';
 import Pedido from '../Views/Pedido'
 import Reportes from '../Views/Reportes';
 import Bebidas from '../Views/Bebidas';
+import Factura from '../Views/Factura'
 
 interface ContainerProps {
   name: string;
@@ -32,6 +33,11 @@ const Router: React.FC<ContainerProps> = ({ name }) => {
   else if (name == 'Pedido'){
     return (
       <Pedido />
+    )
+  }
+  else if (name == 'facturas'){
+    return (
+      <Factura />
     )
   }
 };

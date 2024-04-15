@@ -28,3 +28,10 @@
 .space {
     height: 15%;
 }
+
+#registercenter {
+    display: flex;
+    justify-content: center;
+    align-content: center;
+    margin: 0;
+}
