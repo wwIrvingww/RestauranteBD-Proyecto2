@@ -1,0 +1,10 @@
+@import url('/src/theme/variables.css');
+
+.buttons {
+    margin-top: 10px;
+    font-size: 20px;
+}
+
+.icon {
+    color: var(--ion-color-secondary);
+}
