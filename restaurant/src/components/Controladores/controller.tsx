@@ -47,6 +47,19 @@ export async function getComidas() {
     return listacomidas    
 }
 
+export async function getBebidas() {
+  const data = await fetch('http://127.0.0.1:4000/listbebidas',
+  {
+      method: 'GET',
+      headers: {
+          'Content-Type': 'application/json'
+      }
+
+  })
+
+  const listaBebidas =  await data.json()
+  return listaBebidas    
+}
 
 export async function changeStatrOrder(numberorder: string) {
   try {
