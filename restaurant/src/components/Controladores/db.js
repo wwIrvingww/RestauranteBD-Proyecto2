@@ -166,6 +166,30 @@ export async function estadoorden(estado, numberorder) {
 }
 
 
+export async function asignTable(table1, table2) {
+    try {
+        await client.query(
+            `insert into table_union (table1, table2) values (${table1}, ${table2})`   
+        )
+    } catch (err) {
+        throw err
+    }
+}
+
+export async function createCuenta(fecha_cuenta, hora_inicio, mesa_id, cantidad_persons) {
+    try {
+        await client.query(
+            `insert into cuenta (fecha_cuenta, hora_inicio, mesa_id, cantidad_persons) 
+            values ('${fecha_cuenta}','${hora_inicio}',${mesa_id},${cantidad_persons})`
+        )
+    } catch (err) {
+        throw err
+    }
+}
+
+
+
+
 
 export async function registrar(nombre, contrasenia, rol) {
 

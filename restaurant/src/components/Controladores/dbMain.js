@@ -1,6 +1,10 @@
-import express from 'express'
+import express, { query } from 'express'
 import cors from 'cors'
+<<<<<<< HEAD
 import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato}  from './db.js'
+=======
+import {getUsers, getquejaporcomida, registrar ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta}  from './db.js'
+>>>>>>> 822fae0457d2c7010b5b88186e38d83a599e5179
 
 const app = express()
 const port = 4000
@@ -167,6 +171,31 @@ app.put('/estadorden', async (req, res) => {
 })
 
 
+app.post('/union', async (req, res) => {
+  const {
+    table1, table2
+  } = req.body
+  if (!table1 || !table2) {
+    res.status(400).json({ error: 'Datos incompletos en el cuerpo de la solicitud' })
+  } else {
+    await asignTable(table1, table2)
+    res.status(200).json({ message: 'Union creada exitosamente' })
+  }
+})
+
+app.post('/cuenta', async (req, res) => {
+  const {
+    fecha_cuenta, hora_inicio, mesa_id, cantidad_persons
+  } = req.body
+  if (!fecha_cuenta || !hora_inicio || !mesa_id || !cantidad_persons) {
+    res.status(400).json({ error: 'Datos incompletos en el cuerpo de la solicitud' })
+  } else {
+    await createCuenta(fecha_cuenta, hora_inicio, mesa_id, cantidad_persons)
+    res.status(200).json({message: 'Cuenta abierta exitosamente'})
+  }
+})
+
+
 
 app.post('/register', async (req, res) => {
 
@@ -192,6 +221,7 @@ app.get('/searchuser', async (req, res) => {
 })
 
 
+<<<<<<< HEAD
 app.get('/pedido/:id', async (req, res) => {
 
   const {id} = req.params
@@ -203,3 +233,5 @@ app.get('/pedido/:id', async (req, res) => {
     throw err
   }
 })
+=======
+>>>>>>> 822fae0457d2c7010b5b88186e38d83a599e5179

@@ -58,7 +58,6 @@ const Mesa4: React.FC<ContainerProps> = ({mesaInfo, showButton,setShowButton, my
             setClick(true)
             myTables.push(mesaInfo)
             setMyTables(myTables)
-            console.log(myTables)
         } else {
             setShowButton(showButton-1)
             setPermission(true)
