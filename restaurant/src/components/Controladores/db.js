@@ -176,20 +176,17 @@ export async function asignTable(table1, table2) {
     }
 }
 
-export async function createCuenta(fecha_cuenta, hora_inicio, mesa_id, cantidad_persons) {
+export async function createCuenta(fecha_cuenta, hora_inicio, mesa_id, cantidad_persons, abierta) {
     try {
         await client.query(
-            `insert into cuenta (fecha_cuenta, hora_inicio, mesa_id, cantidad_persons) 
-            values ('${fecha_cuenta}','${hora_inicio}',${mesa_id},${cantidad_persons})`
-        )
+            `INSERT INTO cuenta (fecha_cuenta, hora_inicio, mesa_id, cantidad_persons, abierta) 
+            VALUES ($1, $2, $3, $4, $5)`,
+            [fecha_cuenta, hora_inicio, mesa_id, cantidad_persons, abierta]
+        );
     } catch (err) {
-        throw err
+        throw err;
     }
 }
-
-
-
-
 
 export async function registrar(nombre, contrasenia, rol) {
 
@@ -202,7 +199,29 @@ export async function registrar(nombre, contrasenia, rol) {
     }
 }
 
+export async function obtainCuentas() {
+    try {
+        const result = await client.query(
+            'select id, mesa_id, abierta from cuenta where abierta = true'
+        )
+        return result.rows
+    } catch (err) {
+        throw err
+    }
+}
 
+export async function closeCuenta(nombre, nit, direccion, abierta, mesa_id, hora_fin) {
+    try {
+        await client.query(
+            `update cuenta
+            set nombre_cliente = $1, nit_cliente = $2, direccion = $3, hora_fin = $4, abierta = $5
+            where mesa_id = $6 and abierta = true`, 
+            [nombre, nit, direccion, hora_fin, abierta, mesa_id]
+        )
+    } catch (err) {
+        throw err
+    }
+}
 
 export async function buscarusuario() {
 

@@ -1,12 +1,12 @@
 import { IonButton, IonCard, IonIcon, IonImg } from "@ionic/react"
 import {closeOutline} from 'ionicons/icons'
 import './style.css'
-import Nombre from "./ModalElements/Nombre"
-import NIT from "./ModalElements/NIT"
-import Direccion from "./ModalElements/Direccion"
-import Fecha from "./ModalElements/Fecha"
-import Hora from "./ModalElements/Hora"
-import Tables from "./ModalElements/Tables"
+import Nombre from "../Cuentas/ModalElements/Nombre"
+import NIT from "../Cuentas/ModalElements/NIT"
+import Direccion from "../Cuentas/ModalElements/Direccion"
+import Fecha from "../Cuentas/ModalElements/Fecha"
+import Hora from "../Cuentas/ModalElements/Hora"
+import Tables from "../Cuentas/ModalElements/Tables"
 
 interface ContainerProps { 
     onClose: () => void,

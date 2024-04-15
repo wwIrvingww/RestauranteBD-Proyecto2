@@ -18,7 +18,7 @@ const Asignacion: React.FC<ContainerProps> = () => {
     const [area, setArea] = useState('')
     const [showButton, setShowButton] = useState(0)
     const [myTables, setMyTables] = useState<Tables[]>([])
-    const [cantidadPersonas, setCantidadPersonas] = useState("")
+    const [cantidadPersonas, setCantidadPersonas] = useState('')
 
     const handleClick = async () => {
 
