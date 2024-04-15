@@ -11,7 +11,7 @@ import {
 } from '@ionic/react';
 
 import { useLocation } from 'react-router-dom';
-import { archiveOutline, archiveSharp, bookmarkOutline, heartOutline, heartSharp, mailOutline, mailSharp, paperPlaneOutline, pencilOutline, trashOutline, trashSharp, warningOutline, warningSharp } from 'ionicons/icons';
+import { pencilOutline, trashOutline, trashSharp, warningOutline, warningSharp, bookmarkOutline, checkboxOutline } from 'ionicons/icons';
 import './Menu.css';
 
 interface AppPage {
@@ -30,6 +30,12 @@ const appPages: AppPage[] = [
     mdIcon: pencilOutline
   },
   {
+    title: 'Cuentas',
+    url: '/folder/Cuentas',
+    iosIcon: bookmarkOutline,
+    mdIcon: bookmarkOutline
+  },
+  {
     title: 'Comidas',
     url: '/folder/Comidas',
     iosIcon: trashOutline,
@@ -40,6 +46,12 @@ const appPages: AppPage[] = [
     url: '/folder/Bebidas',
     iosIcon: warningOutline,
     mdIcon: warningSharp
+  },
+  {
+    title: 'Reportes',
+    url: '/folder/Reportes',
+    iosIcon: checkboxOutline,
+    mdIcon: checkboxOutline
   }
 ];
 

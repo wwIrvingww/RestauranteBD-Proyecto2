@@ -55,11 +55,15 @@ const Mesa6: React.FC<ContainerProps> = ({mesaInfo, showButton, setShowButton, m
             setPermission(false)
             setColor(3)
             setClick(true)
+            myTables.push(mesaInfo)
+            setMyTables(myTables)
         } else {
             setShowButton(showButton-1)
             setPermission(true)
             setColor(1)
             setClick(false)
+            const index = myTables.indexOf(mesaInfo)
+            myTables.splice(index)
         }
         
     }

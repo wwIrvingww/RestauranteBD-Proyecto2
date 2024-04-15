@@ -25,10 +25,46 @@ async function getMesas(area: string) {
     return tables
 }
 
+async function makeUnion(table1: number, table2: number) {
+    const object = {
+        table1: table1,
+        table2: table2
+    }
+
+    const data = await fetch('http://127.0.0.1:4000/union',
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(object)
+    })
+}
+
+async function createCuenta(fecha_cuenta: string, hora_inicio: string, mesa_id: number, cantidadPersonas: number) {
+    const object = {
+        fecha_cuenta: fecha_cuenta,
+        hora_inicio: hora_inicio,
+        mesa_id: mesa_id,
+        cantidad_persons: cantidadPersonas
+    }
+    
+    const data = await fetch('http://127.0.0.1:4000/cuenta',
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(object)
+    })
+}
+
 export  {
 
     getAreas,
-    getMesas
+    getMesas,
+    makeUnion,
+    createCuenta
 }
 
 
