@@ -33,7 +33,7 @@ export  {
 
 
 export async function getComidas() {
-    const comidas = await fetch('http://127.0.0.1:4000/listplat',
+    const data = await fetch('http://127.0.0.1:4000/listplat',
     {
         method: 'GET',
         headers: {
@@ -42,27 +42,34 @@ export async function getComidas() {
 
     })
 
-    const listacomidas = await comidas.json ()
-    return comidas    
+    const listacomidas =  await data.json()
+    console.log(listacomidas)
+    return listacomidas    
 }
 
 
 export async function changeStatrOrder(numberorder: string) {
-    try {
-      const response = await fetch('/estadorden', {
-        method: 'PUT',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: JSON.stringify({ estado: 'true', numberorder }) // Cambia 'nuevo_estado' por el estado deseado
+  try {
+      const response = await fetch('http://127.0.0.1:4000/estadorden', {
+          method: 'PUT',
+          headers: {
+              'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+              estado: 'true',
+              numberorder: numberorder
+          })
       });
+
       if (!response.ok) {
-        throw new Error('Network response was not ok');
+          throw new Error('Error al actualizar el estado de la orden');
       }
+
       const data = await response.json();
       return data;
-    } catch (error) {
+  } catch (error) {
       throw error;
-    }
+  }
 }
+
 

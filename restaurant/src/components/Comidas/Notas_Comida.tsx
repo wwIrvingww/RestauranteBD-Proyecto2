@@ -1,13 +1,12 @@
-// En Notas_Comida.tsx
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { IonButton } from '@ionic/react';
 import './Notas_Comida.css';
-import { changeStatrOrder } from '../Controladores/controller'// Importa la función desde el controlador
+import { changeStatrOrder, getComidas } from '../Controladores/controller';
 
 interface Elemento {
-  titulo: string;
+  alimento: string;
   orden: string;
-  hora: string;
+  time: string;
 }
 
 interface Props {
@@ -15,11 +14,27 @@ interface Props {
 }
 
 function Notas_Comida({ elementos }: Props) {
+  const [comidas, setComidas] = useState<Elemento[]>([]);
+
+  useEffect(() => {
+    fetchComidas();
+  }, []);
+
+  const fetchComidas = async () => {
+    try {
+      const comidasData = await getComidas();
+      setComidas(comidasData);
+    } catch (error) {
+      console.error('Error al obtener las comidas:', error);
+    }
+  };
+
   const handleClick = async (numberorder: string) => {
     try {
-      await changeStatrOrder(numberorder); // Llama a la función changeStatrOrder con el número de orden
+      await changeStatrOrder(numberorder);
+      console.log('clickeado')
     } catch (error) {
-      console.error('Error:', error);
+      console.error('Error al actualizar el estado de la orden:', error);
     }
   };
 
@@ -30,10 +45,10 @@ function Notas_Comida({ elementos }: Props) {
           <li key={index} className="cards_item">
             <div className="card">
               <div className="card_content">
-                <h1 className="card_title">{elemento.titulo}</h1>
+                <h1 className="card_title">{elemento.alimento}</h1>
                 <div className="card_text">
                   <p><strong>Orden:</strong> {elemento.orden}</p>
-                  <p><strong>Hora:</strong> {elemento.hora}</p>
+                  <p><strong>Hora:</strong> {elemento.time}</p>
                 </div>
               </div>
               <IonButton expand="block" onClick={() => handleClick(elemento.orden)}>Listo</IonButton>
