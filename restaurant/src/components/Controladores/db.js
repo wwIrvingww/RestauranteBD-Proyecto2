@@ -191,3 +191,26 @@ export async function createCuenta(fecha_cuenta, hora_inicio, mesa_id, cantidad_
 
 
 
+export async function registrar(nombre, contrasenia, rol) {
+
+    try {
+        const result = await client.query(
+            `insert  into usuario values ( '${nombre}', '${contrasenia}', '${rol}' ) `)
+        return result.rows
+    } catch (err) {
+        throw err
+    }
+}
+
+
+
+export async function buscarusuario() {
+
+    try {
+        const result = await client.query(
+            `select nombre, contrasena from usuario `)
+        return result.rows
+    } catch (err) {
+        throw err
+    }
+}

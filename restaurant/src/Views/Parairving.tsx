@@ -1,22 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Notas_Comida from '../components/Comidas/Notas_Comida';
+import { getComidas } from '../components/Controladores/controller';
 
 function OtroComponente() {
-  const elementos = [
-    { titulo: "Ensalada", orden: "#48", hora: "13:00" },
-    { titulo: "Ultimate Reuben", orden: "#49", hora: "13:15" },
-    { titulo: "Fig & Berry Plate", orden: "#50", hora: "13:30" }
-    
-  ];
+  const [comidas, setComidas] = useState([]);
+
+  useEffect(() => {
+    fetchComidas();
+  }, []);
+
+  const fetchComidas = async () => {
+    try {
+      const comidasData = await getComidas();
+      setComidas(comidasData);
+    } catch (error) {
+      console.error('Error al obtener las comidas:', error);
+    }
+  };
 
   return (
     <div>
-      <Notas_Comida elementos={elementos}/>
+      <Notas_Comida elementos={comidas}/>
     </div>
   );
 }
 
 export default OtroComponente;
-
-
-

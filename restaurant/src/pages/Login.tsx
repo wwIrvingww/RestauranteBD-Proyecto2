@@ -13,30 +13,29 @@ import './Login.css';
 import DpiInput from '../components/Login/dpiInput'
 import PasswordInput from '../components/Login/passwordInput'
 import LoginButton from '../components/Login/loginButton'
+import LinkRegister from '../components/Register/LinkRegister';
 import React, { useState } from 'react'
 
 
 const Login: React.FC = () => {
-    const [dpi, setDpi] = useState('')
+    const [nombre, setno] = useState('')
     const [password, setPassword] = useState('')
-
-    const [validateDpi, setValidateDpi] = useState(false)
     const [validatePassword, setValidatePassword] = useState(false)
 
 
     return(
         <IonPage>
             <div className='login'>
-                <DpiInput setDpi={setDpi} validateDpi={validateDpi} setValidateBoolean={setValidateDpi}/>
+                <DpiInput setnombre={setno} />
                 <PasswordInput setPassword={setPassword} validatePassword={validatePassword} setValidatePassword={setValidatePassword}/>
                 <div id='loginCenter'>
                     <LoginButton
-                        dpi={dpi}
-                        validateDpi={validateDpi}
+                        nombre={nombre}
                         password={password}
                         validatePassword={validatePassword}
                     />
                 </div>
+                <LinkRegister/>
             </div>
         </IonPage>
     )

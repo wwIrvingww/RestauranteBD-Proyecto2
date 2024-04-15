@@ -1,6 +1,6 @@
 import express, { query } from 'express'
 import cors from 'cors'
-import {getUsers, getquejaporcomida,estadoorden ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta}  from './db.js'
+import {getUsers, getquejaporcomida, registrar ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta}  from './db.js'
 
 const app = express()
 const port = 4000
@@ -166,6 +166,7 @@ app.put('/estadorden', async (req, res) => {
   }
 })
 
+
 app.post('/union', async (req, res) => {
   const {
     table1, table2
@@ -189,3 +190,30 @@ app.post('/cuenta', async (req, res) => {
     res.status(200).json({message: 'Cuenta abierta exitosamente'})
   }
 })
+
+
+
+app.post('/register', async (req, res) => {
+
+  try{
+    const [ nombre, contrasenia, rol ] = [req.body.nombre, req.body.contrasenia, req.body.rol]
+    const users = await registrar( nombre, contrasenia, rol)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
+
+app.get('/searchuser', async (req, res) => {
+
+  try{
+    const users = await buscarusuario()
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+
