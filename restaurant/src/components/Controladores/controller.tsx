@@ -93,6 +93,49 @@ async function closeCuenta(nombre: string, nit: string, direccion: string, mesa_
     })
 }
 
+async function obtainComida() {
+    const data = await fetch(`http://127.0.0.1:4000/comida`,
+    {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    const comida = await data.json()
+    return comida
+}
+
+async function obtainBebida() {
+    const data = await fetch(`http://127.0.0.1:4000/bebida`,
+    {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json'
+        }
+    })
+
+    const bebida = await data.json()
+    return bebida
+}
+
+async function createOrden(comida : string, time: string) {
+    const object = {
+        nombre: comida,
+        estado: "false",
+        time: time
+    }
+
+    const data = await fetch('http://127.0.0.1:4000/newOrder',
+    {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(object)
+    })
+}
+
 export  {
 
     getAreas,
@@ -100,7 +143,10 @@ export  {
     makeUnion,
     createCuenta,
     obtainCuentas,
-    closeCuenta
+    closeCuenta,
+    obtainComida,
+    obtainBebida,
+    createOrden
 }
 
 

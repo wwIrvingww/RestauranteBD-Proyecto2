@@ -245,3 +245,37 @@ export async function buscarped(id) {
         throw err
     }
 }
+
+export async function obtainComida() {
+    try {
+        const result = await client.query(
+            "select nombre from alimentos where tipo = 'alimento'"
+        )
+        return result.rows
+    } catch (err) {
+        throw err
+    }
+}
+
+export async function obtainBebidas() {
+    try {
+        const result = await client.query(
+            "select nombre from alimentos where tipo = 'bebida'"
+        )
+        return result.rows
+    } catch (err) {
+        throw err
+    }
+}
+
+export async function setOrdenes(alimento, estado, time) {
+    try {
+        await client.query(
+            `insert into ordenes (alimento, estado, time)
+            values ($1, $2, $3)`, 
+            [alimento, estado, time]
+        )
+    } catch (err) {
+        throw err
+    }
+}

@@ -23,9 +23,7 @@ const ContentA: React.FC<ContainerProps> = ({onClose, myTables}) => {
             <IonButton onClick={onClose}>
                 <IonIcon icon={closeOutline}></IonIcon>
             </IonButton>
-            <Nombre />
-            <NIT />
-            <Direccion />
+          
             <Fecha />
             <Hora />
             <Tables myTables={myTables} />
