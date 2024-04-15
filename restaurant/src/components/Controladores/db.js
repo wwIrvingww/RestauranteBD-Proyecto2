@@ -34,7 +34,7 @@ export async function getquejaporcomida(fechainicio, fechafinal) {
 
     try {
         const result = await client.query(
-            `select count(id) as cantidad_quejas, alimento from quejac q where fecha between '2024-04-06' and '2024-06-04' group by alimento;`
+            `select count(id) as cantidad_quejas, alimento, string_agg(motivo, ', ') from quejac q where fecha between '${fechainicio}' and '${fechafinal}' group by alimento`
             )
         return result.rows
     } catch (err) {
@@ -89,7 +89,7 @@ export async function getreporteperso(fechainicio, fechafinal) {
 
     try {
         const result = await client.query(
-            `select personal, string_agg(motivo, ', ')  from quejap q where fecha between '${fechainicio}' and '${fechafinal}' group by personal;`
+            `select count(id) as cantidad_quejas,  personal, string_agg(motivo, ', ')  from quejap q where fecha between '${fechainicio}' and '${fechafinal}' group by personal;`
             )
         return result.rows
     } catch (err) {

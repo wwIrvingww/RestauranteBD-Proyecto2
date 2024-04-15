@@ -1,10 +1,6 @@
 import express, { query } from 'express'
 import cors from 'cors'
-<<<<<<< HEAD
-import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato}  from './db.js'
-=======
-import {getUsers, getquejaporcomida, registrar ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta}  from './db.js'
->>>>>>> 822fae0457d2c7010b5b88186e38d83a599e5179
+import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta }  from './db.js'
 
 const app = express()
 const port = 4000
@@ -221,7 +217,6 @@ app.get('/searchuser', async (req, res) => {
 })
 
 
-<<<<<<< HEAD
 app.get('/pedido/:id', async (req, res) => {
 
   const {id} = req.params
@@ -233,5 +228,3 @@ app.get('/pedido/:id', async (req, res) => {
     throw err
   }
 })
-=======
->>>>>>> 822fae0457d2c7010b5b88186e38d83a599e5179
