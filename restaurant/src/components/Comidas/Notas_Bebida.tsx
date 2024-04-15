@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IonButton } from '@ionic/react';
 import './Notas_Comida.css';
-import { changeStatrOrder, getComidas } from '../Controladores/controller';
+import { changeStatrOrder, getBebidas } from '../Controladores/controller';
 
 interface Elemento {
   alimento: string;
@@ -22,7 +22,7 @@ function Notas_Comida({ elementos }: Props) {
 
   const fetchComidas = async () => {
     try {
-      const comidasData = await getComidas();
+      const comidasData = await getBebidas();
       setComidas(comidasData);
     } catch (error) {
       console.error('Error al obtener las comidas:', error);
