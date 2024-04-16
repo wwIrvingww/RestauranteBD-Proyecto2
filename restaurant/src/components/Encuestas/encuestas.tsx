@@ -1,16 +1,31 @@
 // Encuesta.js
 import React, { useState } from 'react';
 import './encuestas.css';
+import { IonButton } from '@ionic/react';
+import { send } from 'ionicons/icons';
+import { sendSurvey } from '../Controladores/controller';
 
 function Encuesta() {
     const [nombre, setNombre] = useState('');
     const [pregunta1, setPregunta1] = useState('');
     const [pregunta2, setPregunta2] = useState('');
 
-    const handleSubmit = () => {
-        console.log('Nombre:', nombre);
-        console.log('Pregunta 1:', pregunta1);
-        console.log('Pregunta 2:', pregunta2);
+    const handleSubmit = async () => {
+        let id = Math.floor(Math.random() * 1000)
+        const date: Date = new Date()
+        const year: number = date.getFullYear()
+        const month: number = date.getMonth()
+        const day: number = date.getDate()
+
+        const format: string = (month < 10) ? '0': ''
+
+        const fecha: string = year+'-'+format+month+'-'+day
+
+        setNombre('')
+        setPregunta1('')
+        setPregunta2('')
+
+        await sendSurvey(id.toString(), nombre, fecha, parseFloat(pregunta1), parseFloat(pregunta2))
     };
 
     return (
@@ -26,7 +41,7 @@ function Encuesta() {
                     />
                 </div>
                 <div className="input-group">
-                    <label>Pregunta 1</label>
+                    <label>Califique la amabilidad del mesero:</label>
                     <input
                         type="number"
                         value={pregunta1}
@@ -34,14 +49,15 @@ function Encuesta() {
                     />
                 </div>
                 <div className="input-group">
-                    <label>Pregunta 2</label>
+                    <label>Califique la exactitud de lo recibido respecto a lo solicitado al mesero</label>
                     <input
                         type="number"
                         value={pregunta2}
                         onChange={(e) => setPregunta2(e.target.value)}
+                        onClick={handleSubmit}
                     />
                 </div>
-                <button onClick={handleSubmit}>Enviar</button>
+                <IonButton>Calificar</IonButton>
             </div>
         </div>
     );

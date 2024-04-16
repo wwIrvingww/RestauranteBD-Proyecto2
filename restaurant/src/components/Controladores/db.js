@@ -279,3 +279,14 @@ export async function setOrdenes(alimento, estado, time) {
         throw err
     }
 }
+
+export async function sendEncuesta(id, nombre, fecha, res1, res2){
+    try {
+        await client.query(
+            `insert into encuestas (id, nombre, fecha, preg1, preg2)
+            values ($1, $2, $3, $4, $5)`, [id, nombre, fecha, res1, res2]
+        )
+    } catch (err) {
+        throw err
+    }
+}

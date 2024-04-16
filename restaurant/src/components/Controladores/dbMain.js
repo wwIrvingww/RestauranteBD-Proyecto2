@@ -1,7 +1,7 @@
 import express, { query } from 'express'
 import cors from 'cors'
 
-import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes }  from './db.js'
+import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes, sendEncuesta }  from './db.js'
 
 const app = express()
 const port = 4000
@@ -240,6 +240,18 @@ app.post('/newOrder', async (req, res) => {
   } else {
       await setOrdenes(nombre, estado, time);
       res.status(200).json({message: 'Orden creada exitosamente'});
+  }
+})
+
+app.post('/survey', async (req, res) => {
+  const {
+    id, nombre, fecha,res1, res2
+  } = req.body
+  if (!id || !nombre || !fecha || !res1 || !res2) {
+    res.status(400).json({ error: 'Datos incompletos en el cuerpo de la solicitud' });
+  } else {
+    await sendEncuesta(id, nombre, fecha, res1, res2)
+    res.status(200).json({message: 'Encuesta respuesta exitosamente'});
   }
 })
 

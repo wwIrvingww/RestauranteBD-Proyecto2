@@ -136,6 +136,26 @@ async function createOrden(comida : string, time: string) {
     })
 }
 
+async function sendSurvey(id: string, nombre: string, fecha: string, res1: number, res2: number) {
+    const object = {
+        id: id,
+        nombre: nombre,
+        fecha: fecha,
+        res1: res1,
+        res2: res2
+    }
+
+    const data = await fetch('http://127.0.0.1:4000/survey',
+        {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(object)
+        }
+    )
+}
+
 export  {
 
     getAreas,
@@ -146,7 +166,8 @@ export  {
     closeCuenta,
     obtainComida,
     obtainBebida,
-    createOrden
+    createOrden,
+    sendSurvey
 }
 
 
