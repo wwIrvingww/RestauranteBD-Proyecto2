@@ -35,23 +35,21 @@ const App: React.FC = () => {
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
-          {isLoggedIn ? <Menu /> : null} {/* Mostramos el menú solo si el usuario está logeado */}
+          <Menu />
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}>
-              {isLoggedIn ? <Redirect to="/menu" /> : <Redirect to="/login" />}
+              <Redirect to="/Login" />
             </Route>
 
-            <Route path="/login" exact={true}>
-              <Login onLoginSuccess={() => setIsLoggedIn(true)} />
+            <Route path="/login" >
+              <Login onLoginSuccess={function (): void {
+                throw new Error('Function not implemented.');
+              } }/>
             </Route>
-            <Route path="/register" exact={true}>
-              <Register />
+            <Route path="/register" >
+              <Register/>
             </Route>
-
-            <Route path="/menu" exact={true}>
-              {isLoggedIn ? <Menu /> : <Redirect to="/login" />}
-            </Route>
-
+            
             <Route path="/folder/:name" exact={true}>
               <Page />
             </Route>

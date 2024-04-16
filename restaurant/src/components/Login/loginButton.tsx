@@ -28,7 +28,7 @@ const LoginButton: React.FC<LoginButtonProps> = ({
 
             if (estado === true) {
                 console.log("Has iniciado sesión correctamente");
-                onLoginSuccess(); // Llama a la función proporcionada por el padre cuando el inicio de sesión es exitoso
+                 // Llama a la función proporcionada por el padre cuando el inicio de sesión es exitoso
                 history.push("/folder/Asignación"); // Redirige a la página deseada
             } else {
                 console.log("Usuario no encontrado");

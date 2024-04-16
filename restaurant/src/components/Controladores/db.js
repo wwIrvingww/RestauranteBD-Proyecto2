@@ -290,3 +290,14 @@ export async function sendEncuesta(id, nombre, fecha, res1, res2){
         throw err
     }
 }
+
+export async function getSurveus(){
+    try {
+        const result = await client.query(
+            "select * from encuestas"
+        )
+        return result.rows
+    } catch (err) {
+        throw err
+    }
+}
