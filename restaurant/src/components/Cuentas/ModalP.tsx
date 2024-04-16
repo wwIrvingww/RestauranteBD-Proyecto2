@@ -1,10 +1,7 @@
 import { IonButton, IonCard, IonIcon } from "@ionic/react";
 import { closeOutline } from 'ionicons/icons';
-import Nombre from "./ModalElements/Nombre";
-import NIT from "./ModalElements/NIT";
-import Direccion from "./ModalElements/Direccion";
 import { useEffect, useState } from "react";
-import { closeCuenta, createOrden, getBebidas, getComidas, obtainBebida, obtainComida } from "../Controladores/controller";
+import { createOrden, obtainBebida, obtainComida } from "../Controladores/controller";
 
 interface ContainerProps { 
     setCerrar: (cerrar: boolean) => void,

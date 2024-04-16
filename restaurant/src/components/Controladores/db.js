@@ -291,14 +291,25 @@ export async function sendEncuesta(id, nombre, fecha, res1, res2){
     }
 }
 
+<<<<<<< HEAD
 
 export async function sacarfact(ids) {
     try {
         const result = await client.query(
             `select alimento, unitprice from cuenta join ordenes on cuenta_id = cuenta.id join alimentos on nombre = alimento where id = ${ids}`
+=======
+export async function getSurveus(){
+    try {
+        const result = await client.query(
+            "select * from encuestas"
+>>>>>>> a4b8211c486e800d1e52d984a355c3439f5671ac
         )
         return result.rows
     } catch (err) {
         throw err
     }
+<<<<<<< HEAD
 }
+=======
+}
+>>>>>>> a4b8211c486e800d1e52d984a355c3439f5671ac

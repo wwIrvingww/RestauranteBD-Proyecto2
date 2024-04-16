@@ -1,7 +1,11 @@
 import express, { query } from 'express'
 import cors from 'cors'
 
+<<<<<<< HEAD
 import {getUsers, getquejaporcomida, sacarfact ,registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes, sendEncuesta }  from './db.js'
+=======
+import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes, sendEncuesta, getSurveus }  from './db.js'
+>>>>>>> a4b8211c486e800d1e52d984a355c3439f5671ac
 
 const app = express()
 const port = 4000
@@ -252,6 +256,15 @@ app.post('/survey', async (req, res) => {
   } else {
     await sendEncuesta(id, nombre, fecha, res1, res2)
     res.status(200).json({message: 'Encuesta respuesta exitosamente'});
+  }
+})
+
+app.get('surveyGet', async (req, res) => {
+  try {
+    const survey = await getSurveus()
+    res.json(survey)
+  } catch (err) {
+    res.status(500).json({ error: 'Error interno del servidor' })
   }
 })
 

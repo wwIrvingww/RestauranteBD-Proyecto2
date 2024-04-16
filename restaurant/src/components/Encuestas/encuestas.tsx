@@ -25,6 +25,8 @@ function Encuesta() {
         setPregunta1('')
         setPregunta2('')
 
+        console.log('AAA')
+
         await sendSurvey(id.toString(), nombre, fecha, parseFloat(pregunta1), parseFloat(pregunta2))
     };
 
@@ -54,10 +56,9 @@ function Encuesta() {
                         type="number"
                         value={pregunta2}
                         onChange={(e) => setPregunta2(e.target.value)}
-                        onClick={handleSubmit}
                     />
                 </div>
-                <IonButton>Calificar</IonButton>
+                <IonButton  onClick={handleSubmit}>Calificar</IonButton>
             </div>
         </div>
     );

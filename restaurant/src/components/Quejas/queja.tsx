@@ -11,8 +11,9 @@ function Queja() {
     };
 
     return (
-        <div className="encuesta-container">
-            <h2>Encuesta</h2>
+        <div>
+            <div className="encuesta-container">
+            <h2>Queja normal</h2>
             <div className="encuesta-form">
                 <div className="input-group">
                     <label>Nombre</label>
@@ -33,6 +34,9 @@ function Queja() {
                 <button onClick={handleSubmit}>Enviar</button>
             </div>
         </div>
+        
+        </div>
+        
     );
 }
 

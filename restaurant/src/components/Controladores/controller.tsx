@@ -145,16 +145,26 @@ async function sendSurvey(id: string, nombre: string, fecha: string, res1: numbe
         res2: res2
     }
 
-    const data = await fetch('http://127.0.0.1:4000/survey',
-        {
+    try {
+        const response = await fetch('http://127.0.0.1:4000/survey', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify(object)
+        });
+
+        if (!response.ok) {
+            throw new Error('Error al enviar la encuesta');
         }
-    )
+
+        const responseData = await response.json();
+        console.log(responseData); // Solo para propósitos de depuración o manejo de la respuesta
+    } catch (error) {
+        console.error('Error:', error);
+    }
 }
+
 
 export  {
 
