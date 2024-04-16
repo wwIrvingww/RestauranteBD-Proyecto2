@@ -17,11 +17,19 @@ import LinkRegister from '../components/Register/LinkRegister';
 import React, { useState } from 'react'
 
 
-const Login: React.FC = () => {
+interface LoginProps {
+    onLoginSuccess: () => void;
+}
+
+const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     const [nombre, setno] = useState('')
     const [password, setPassword] = useState('')
     const [validatePassword, setValidatePassword] = useState(false)
 
+    const handleLoginSuccess = () => {
+  
+        onLoginSuccess();
+    }
 
     return(
         <IonPage>
@@ -33,6 +41,7 @@ const Login: React.FC = () => {
                         nombre={nombre}
                         password={password}
                         validatePassword={validatePassword}
+                        onLoginSuccess={handleLoginSuccess}
                     />
                 </div>
                 <LinkRegister/>

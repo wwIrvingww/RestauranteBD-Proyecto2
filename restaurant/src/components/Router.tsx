@@ -7,6 +7,7 @@ import Cunetas from '../Views/Cunetas';
 import Bebidas from '../Views/Bebidas';
 import Factura from '../Views/Factura'
 import Encuestas from '../Views/Encuestas';
+import Quejas from '../Views/Quejas';
 
 interface ContainerProps {
   name: string;
@@ -49,6 +50,11 @@ const Router: React.FC<ContainerProps> = ({ name }) => {
   else if (name == 'encuestas'){
     return (
       <Encuestas />
+    )
+  }
+  else if (name == 'quejas'){
+    return (
+      <Quejas />
     )
   }
 };

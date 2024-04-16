@@ -1,9 +1,11 @@
 import { IonApp, IonRouterOutlet, IonSplitPane, setupIonicReact } from '@ionic/react';
 import { IonReactRouter } from '@ionic/react-router';
 import { Redirect, Route } from 'react-router-dom';
-import Menu from './components/Menu';
 import Page from './pages/Page';
 import Login from './pages/Login';
+import Register from './pages/Register';
+import Menu from './components/Menu'; // Agregamos la importación del menú aquí
+import { useState } from 'react';
 
 /* Core CSS required for Ionic components to work properly */
 import '@ionic/react/css/core.css';
@@ -23,29 +25,33 @@ import '@ionic/react/css/display.css';
 
 /* Theme variables */
 import './theme/variables.css';
-import Register from './pages/Register';
-
 
 setupIonicReact();
 
 const App: React.FC = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(false); // Estado para rastrear el estado de inicio de sesión
+
   return (
     <IonApp>
       <IonReactRouter>
         <IonSplitPane contentId="main">
-          <Menu />
+          {isLoggedIn ? <Menu /> : null} {/* Mostramos el menú solo si el usuario está logeado */}
           <IonRouterOutlet id="main">
             <Route path="/" exact={true}>
-              <Redirect to="/Login" />
+              {isLoggedIn ? <Redirect to="/menu" /> : <Redirect to="/login" />}
             </Route>
 
-            <Route path="/login" >
-              <Login/>
+            <Route path="/login" exact={true}>
+              <Login onLoginSuccess={() => setIsLoggedIn(true)} />
             </Route>
-            <Route path="/register" >
-              <Register/>
+            <Route path="/register" exact={true}>
+              <Register />
             </Route>
-            
+
+            <Route path="/menu" exact={true}>
+              {isLoggedIn ? <Menu /> : <Redirect to="/login" />}
+            </Route>
+
             <Route path="/folder/:name" exact={true}>
               <Page />
             </Route>
