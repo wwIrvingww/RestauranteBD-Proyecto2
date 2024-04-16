@@ -1,7 +1,7 @@
 import express, { query } from 'express'
 import cors from 'cors'
 
-import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes, sendEncuesta }  from './db.js'
+import {getUsers, getquejaporcomida, sacarfact ,registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes, sendEncuesta }  from './db.js'
 
 const app = express()
 const port = 4000
@@ -285,6 +285,17 @@ app.get('/pedido/:id', async (req, res) => {
 
   try{
     const users = await buscarped(id)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+app.get('/ponerfactura/:id', async (req, res) => {
+
+  const {id} = req.params
+  try{
+    const users = await sacarfact(id)
     res.json(users)
   } catch(err){
     throw err

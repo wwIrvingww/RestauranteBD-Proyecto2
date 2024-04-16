@@ -81,7 +81,7 @@ const Pedido: React.FC<ContainerProps> = () => {
 
                 <div style={{ marginTop: '5%' }}>
                     <p style={{ justifyContent: 'center', textAlign: 'center' }}>
-                        <Alimentos alimentos={[{ cantidad: 4, nombre: "pescado", precioUnitario: 36.0 }, { cantidad: 2, nombre: "cafe", precioUnitario: 8.00 }, { cantidad: 1, nombre: "pastel de zanahorio", precioUnitario: 24.00 }]} />
+                        <Alimentos id={id} />
                     </p>
                 </div>
 
@@ -119,5 +119,4 @@ const Pedido: React.FC<ContainerProps> = () => {
     )
 
 }
-
 export default Pedido;

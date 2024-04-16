@@ -290,3 +290,15 @@ export async function sendEncuesta(id, nombre, fecha, res1, res2){
         throw err
     }
 }
+
+
+export async function sacarfact(ids) {
+    try {
+        const result = await client.query(
+            `select alimento, unitprice from cuenta join ordenes on cuenta_id = cuenta.id join alimentos on nombre = alimento where id = ${ids}`
+        )
+        return result.rows
+    } catch (err) {
+        throw err
+    }
+}

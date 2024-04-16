@@ -1,22 +1,38 @@
-import React from "react";
+import React, { useEffect, useState } from 'react';
+import { IonItem, IonLabel, IonList } from '@ionic/react';
+import { buscar } from '../Controladores/controller';
 
-interface AlimentoProps {
-    alimentos: { cantidad: number, nombre: string, precioUnitario: number }[];
+interface PlatosProps {
+  id: string,
 }
 
-const Alimentos: React.FC<AlimentoProps> = ({ alimentos }) => {
-    return (
-        <div style={{marginTop:'5%'}}>
-            <p style={{ justifyContent:'center', textAlign:'center'}}>Alimentos</p>
-            <ul style={{ listStyleType: 'none' }}>
-                {alimentos.map((alimento, index) => (
-                    <li key={index}>
-                        {alimento.cantidad} {alimento.nombre} {alimento.precioUnitario.toFixed(2)}
-                    </li>
-                ))}
-            </ul>
-        </div>
-    );
+interface palto{
+    alimento: string
+    unitprice: string
+    
 }
+
+
+const Alimentos: React.FC<PlatosProps> = ({ id  }) => {
+  const [cuentas, setCuentas] = useState<palto[]>([])
+
+  useEffect(() => {
+    const fetchData = async () => {
+        setCuentas(await buscar(id))
+    }
+
+    fetchData()
+}, [])
+
+  return (
+    <IonList>
+      {cuentas.map((item, index) => (
+        <IonItem key={index}>
+          <IonLabel>{item.alimento}: {item.unitprice}</IonLabel>
+        </IonItem>
+      ))}
+    </IonList>
+  );
+};
 
 export default Alimentos;
