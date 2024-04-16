@@ -10,9 +10,7 @@ async function getuserpas(nombre: String, contrasenia: string) {
     })
 
     const areas = await data.json()
-
-    debugger
-    
+ 
 
     for(const i in areas ){
         if((nombre+'' == areas[i].nombre) && (contrasenia == areas[i].contrasena)){

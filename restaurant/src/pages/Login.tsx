@@ -27,7 +27,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
     const [validatePassword, setValidatePassword] = useState(false)
 
     const handleLoginSuccess = () => {
-        // Lógica adicional de inicio de sesión, si es necesaria
+  
         onLoginSuccess();
     }
 
@@ -41,7 +41,7 @@ const Login: React.FC<LoginProps> = ({ onLoginSuccess }) => {
                         nombre={nombre}
                         password={password}
                         validatePassword={validatePassword}
-                        onLoginSuccess={handleLoginSuccess} // Llama a esta función cuando el inicio de sesión es exitoso
+                        onLoginSuccess={handleLoginSuccess}
                     />
                 </div>
                 <LinkRegister/>

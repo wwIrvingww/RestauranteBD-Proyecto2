@@ -174,6 +174,8 @@ export  {
     createCuenta,
     obtainCuentas,
     closeCuenta,
+    Horarioconmasdemanda,
+    platosmaspedidos,
     obtainComida,
     obtainBebida,
     createOrden,
@@ -236,17 +238,14 @@ export async function changeStatrOrder(numberorder: string) {
 
 
 
-export async function platosmaspedidos(fechainicio: string, fechafinal: string) {
+async function platosmaspedidos(fechainicio: string, fechafinal: string) {
     try {
-        const response = await fetch('http://127.0.0.1:4000/report_1', {
+
+        const response = await fetch(`http://127.0.0.1:4000/report_1/${fechainicio}/${fechafinal}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                fechainicio: fechafinal,
-                fechafinal: fechainicio
-            })
         });
   
         if (!response.ok) {
@@ -261,9 +260,9 @@ export async function platosmaspedidos(fechainicio: string, fechafinal: string) 
 }
   
 
-export async function Horarioconmasdemanda(fechainicio: string, fechafinal: string) {
+async function Horarioconmasdemanda(fechainicio: string, fechafinal: string) {
     try {
-        const url = `http://127.0.0.1:4000/cpedidos?fechainicio=${fechainicio}&fechafinal=${fechafinal}`;
+        const url = `http://127.0.0.1:4000/cpedidos/:${fechainicio}/:${fechafinal}`;
         const response = await fetch(url, {
             method: 'GET',
             headers: {
@@ -285,15 +284,11 @@ export async function Horarioconmasdemanda(fechainicio: string, fechafinal: stri
   
   export async function mefeciency(fechainicio: string, fechafinal: string) {
     try {
-        const response = await fetch('http://127.0.0.1:4000/meficiency', {
+        const response = await fetch(`http://127.0.0.1:4000/meficiency/:${fechainicio}/:${fechafinal}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                fechainicio: fechafinal,
-                fechafinal: fechainicio
-            })
+            }
         });
   
         if (!response.ok) {
@@ -310,15 +305,11 @@ export async function Horarioconmasdemanda(fechainicio: string, fechafinal: stri
 
   export async function grupquejasalim(fechainicio: string, fechafinal: string) {
     try {
-        const response = await fetch('http://127.0.0.1:4000/gqueja', {
+        const response = await fetch(`http://127.0.0.1:4000/gqueja/:${fechainicio}/:${fechafinal}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                fechainicio: fechafinal,
-                fechafinal: fechainicio
-            })
         });
   
         if (!response.ok) {
@@ -336,15 +327,12 @@ export async function Horarioconmasdemanda(fechainicio: string, fechafinal: stri
 
   export async function grupquejaspers(fechainicio: string, fechafinal: string) {
     try {
-        const response = await fetch('http://127.0.0.1:4000/report_4', {
+        const response = await fetch(`http://127.0.0.1:4000/report_4/:${fechainicio}/:${fechafinal}`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                fechainicio: fechafinal,
-                fechafinal: fechainicio
-            })
+         
         });
   
         if (!response.ok) {
@@ -360,15 +348,11 @@ export async function Horarioconmasdemanda(fechainicio: string, fechafinal: stri
 
   export async function eattimes(fechainicio: string, fechafinal: string) {
     try {
-        const response = await fetch('http://127.0.0.1:4000/eattime', {
+        const response = await fetch(`http://127.0.0.1:4000/eattime/:${fechainicio}/:${fechafinal}:`, {
             method: 'GET',
             headers: {
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                fechainicio: fechafinal,
-                fechafinal: fechainicio
-            })
         });
   
         if (!response.ok) {

@@ -35,10 +35,10 @@ app.get('/usuario', async (req, res) => {
 
 
 
-app.get('/cpedidos', async (req, res) => {
+app.get('/cpedidos/:fechainicio/:fechafinal', async (req, res) => {
 
   try{
-    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const [ fechainicio, fechafinal ] = [req.params.fechainicio, req.params.fechafinal]
     const users = await cantpedidos( fechainicio, fechafinal)
     res.json(users)
   } catch(err){
@@ -48,10 +48,10 @@ app.get('/cpedidos', async (req, res) => {
 
 
 
-app.get('/gqueja', async (req, res) => {
+app.get('/gqueja/:fechainicio/:fechafinal', async (req, res) => {
 
   try{
-    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const [ fechainicio, fechafinal ] = [req.params.fechainicio, req.params.fechafinal]
     const users = await getquejaporcomida( fechainicio, fechafinal)
     res.json(users)
   } catch(err){
@@ -84,10 +84,10 @@ app.get('/listbebidas', async (req, res) => {
 
 // #Prince
 
-app.get('/report_1', async (req, res) => {
+app.get('/report_1/:fechainicio/:fechafinal', async (req, res) => {
 
   try{
-    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const [ fechainicio, fechafinal ] = [req.params.fechainicio, req.params.fechafinal]
     const users = await getreporte( fechainicio, fechafinal)
     res.json(users)
   } catch(err){
@@ -95,10 +95,10 @@ app.get('/report_1', async (req, res) => {
   }
 })
 
-app.get('/report_4', async (req, res) => {
+app.get('/report_4/:fechainicio/:fechafinal', async (req, res) => {
 
   try{
-    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const [ fechainicio, fechafinal ] = [req.params.fechainicio, req.params.fechafinal]
     const users = await getreporteperso( fechainicio, fechafinal)
     res.json(users)
   } catch(err){
@@ -133,10 +133,10 @@ app.get('/get_mesas_area/:area', async (req, res) => {
 
 // tiempo de Andre
 
-app.get('/eattime', async (req, res) => {
+app.get('/eattime/:fechainicio/:fechafinal', async (req, res) => {
 
   try{
-    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const [ fechainicio, fechafinal ] = [req.params.fechainicio, req.params.fechafinal]
     const users = await eatingtime( fechainicio, fechafinal)
     res.json(users)
   } catch(err){
@@ -145,10 +145,10 @@ app.get('/eattime', async (req, res) => {
 })
 
 
-app.get('/meficiency', async (req, res) => {
+app.get('/meficiency/:fechainicio/:fechafinal', async (req, res) => {
 
   try{
-    const [ fechainicio, fechafinal ] = [req.body.fechainicio, req.body.fechafinal]
+    const [ fechainicio, fechafinal ] = [req.params.fechainicio, req.params.fechafinal]
     const users = await mesereficiencia( fechainicio, fechafinal)
     res.json(users)
   } catch(err){
