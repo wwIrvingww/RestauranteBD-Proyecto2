@@ -13,10 +13,7 @@ function Butonns() {
     const [fechainicio, setfechainicio] = useState('')
     const [fechafinal, setfechafinal] = useState('')
 
-    const promedioData = [
-        { persona: "tres", tiempo: "1:00" },
-        { persona: "cuatro", tiempo: "2:00" }
-    ];
+
 
     const handleInputChange = (event: CustomEvent<InputChangeEventDetail>) => {
       const value = (event.target as HTMLInputElement).value;

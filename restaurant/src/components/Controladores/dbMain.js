@@ -1,11 +1,7 @@
 import express, { query } from 'express'
 import cors from 'cors'
 
-<<<<<<< HEAD
-import {getUsers, getquejaporcomida, sacarfact ,registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes, sendEncuesta }  from './db.js'
-=======
-import {getUsers, getquejaporcomida, registrar, buscarped ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes, sendEncuesta, getSurveus }  from './db.js'
->>>>>>> a4b8211c486e800d1e52d984a355c3439f5671ac
+import {getUsers, getquejaporcomida, sacarfact ,registrar, buscarped, sacartotal ,estadoorden, buscarusuario ,getreporte, eatingtime , mesereficiencia, get_mesas_area, getarea, cantpedidos, getreporteperso, listadobeb ,listadoplato, asignTable, createCuenta, obtainCuentas, closeCuenta, obtainComida, obtainBebidas, setOrdenes, sendEncuesta }  from './db.js'
 
 const app = express()
 const port = 4000
@@ -309,6 +305,17 @@ app.get('/ponerfactura/:id', async (req, res) => {
   const {id} = req.params
   try{
     const users = await sacarfact(id)
+    res.json(users)
+  } catch(err){
+    throw err
+  }
+})
+
+app.get('/totale/:id', async (req, res) => {
+
+  const {id} = req.params
+  try{
+    const users = await sacartotal(id)
     res.json(users)
   } catch(err){
     throw err

@@ -1,8 +1,9 @@
-import { IonButton } from '@ionic/react'
+import { InputChangeEventDetail, IonButton, IonContent, IonInput, IonPopover } from '@ionic/react'
 import './button.css'
 import { Link } from 'react-router-dom'
 import Listapedidos from './Listapedidos'
 import { pedir } from './getpedidos'
+import { useState } from 'react'
 
 // Usercontroller lo tengo que usar para 
 // import { userExists } from '../../controller/UserController'
@@ -18,32 +19,40 @@ const PedirButton: React.FC<ContainerProps> = ({
 
 }) => {
 
-    const handleClick = async () => {
-        console.log(id)
+    const [ids, setid] = useState('')
+    
 
-            try {
-                if (id != '') {
-                    const dato = await pedir(id+'')
-                    console.log(dato);
-                    debugger
-                    <Listapedidos elementos={dato} id={id+''} ></Listapedidos>
-                    
-                } else {
-                    console.log("Usuario no encontrado");
-                }
-            } catch (error) {
-                console.error("Error:", error);
-            }
-            
-    }    
 
-    return (
-        <IonButton 
-            style={{display:'flex', margin:'10vw', marginTop:'10px'}}
-            color='secondary'
-            onClick={handleClick}
-        ><b>BUSCAR</b></IonButton>
-    )
+    const handleInputChange = (event: CustomEvent<InputChangeEventDetail>) => {
+      const value = (event.target as HTMLInputElement).value;
+      setid(value);
+      console.log(value)
+   
+  }
+
+
+
+
+
+
+  return (
+    <div className="container">
+        <IonInput
+            label='Cuenta ID' 
+            style={{textAlign:'center', margin:'5%', width:'90%', display:'flex'}}
+            fill='outline' 
+            placeholder='No.' 
+            color='tertiary'
+            errorText='No se encuentra este ID'
+            onIonChange={handleInputChange}
+            >
+            </IonInput>
+      <IonButton id="click-trigger">Buscar Pedido</IonButton>
+      <IonPopover trigger="click-trigger" triggerAction="click">
+        <IonContent className="ion-padding"> <Listapedidos id={ids}/> </IonContent>
+      </IonPopover>
+    </div>
+      )
 }
 
 export default PedirButton

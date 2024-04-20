@@ -2,11 +2,12 @@ import React from "react";
 import { useEffect, useState } from "react";
 import Selector from "../components/Asignacion/Selector";
 import Tableset from "../components/Asignacion/Tableset";
-import { InputChangeEventDetail, IonButton, IonInput, IonItem, IonSelect, IonSelectOption } from "@ionic/react";
+import { InputChangeEventDetail, IonButton, IonContent, IonInput, IonItem, IonSelect, IonSelectOption } from "@ionic/react";
 import '../components/Asignacion/style.css';
 import PedirButton from '../components/Listas/pedidosbutton';
 import Listapedidos from "../components/Listas/Listapedidos";
 import Alimentos from "../components/Facturas/Alimentos";
+import { buscarpedidus } from "../components/Controladores/controller";
 
 interface ContainerProps { }
 
@@ -17,7 +18,7 @@ interface pedido {
     preciounit: number
 }
 
-const Pedido: React.FC<ContainerProps> = () => {
+const Facturas: React.FC<ContainerProps> = () => {
 
     const [lista, setlistas] = useState([]);
     const [id, setid] = useState('')
@@ -31,6 +32,22 @@ const Pedido: React.FC<ContainerProps> = () => {
         window.location.href = 'http://localhost:8100/folder/encuestas';
     };
 
+    const handleid = () => {
+        console.log('Buscando')
+
+
+        
+
+        
+    };
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setlistas(await buscarpedidus(id))
+        }
+        fetchData()
+    }, [])
+
     return (
         <>
             <div>
@@ -43,8 +60,9 @@ const Pedido: React.FC<ContainerProps> = () => {
                     errorText='No se encuentra este ID'
                     onIonChange={handleInputChange}
                 >
+                <IonButton style={{ margin: '2%', textAlign: 'center' }} onClick={handleid}>Buscar pedido</IonButton>                
                 </IonInput>
-                <div><PedirButton id={id} /></div>
+                
                 <div style={{ display: 'flex', flexDirection: 'row' }}>
                     <IonInput
                         label='Nombre'
@@ -80,9 +98,7 @@ const Pedido: React.FC<ContainerProps> = () => {
                 </IonInput>
 
                 <div style={{ marginTop: '5%' }}>
-                    <p style={{ justifyContent: 'center', textAlign: 'center' }}>
-                        <Alimentos id={id} />
-                    </p>
+                  {/* <Alimentos id={id} elemento={lista} /> */}
                 </div>
 
                 <div style={{ marginTop: '5%' }}>
@@ -119,4 +135,4 @@ const Pedido: React.FC<ContainerProps> = () => {
     )
 
 }
-export default Pedido;
+export default Facturas;

@@ -367,6 +367,28 @@ async function Horarioconmasdemanda(fechainicio: string, fechafinal: string) {
   }
   
 
+  export async function buscarpedidus(id: string) {
+    try {
+        const response = await fetch(`http://127.0.0.1:4000/pedido/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+  
+        if (!response.ok) {
+            throw new Error('Error al actualizar el estado de la orden');
+        }
+  
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw error;
+    }
+  }
+  
+
+
   export async function buscar(id: string) {
     try {
         const response = await fetch(`http://127.0.0.1:4000/ponerfactura/${id}`, {
@@ -380,6 +402,27 @@ async function Horarioconmasdemanda(fechainicio: string, fechafinal: string) {
             throw new Error('Error al actualizar el estado de la orden');
         }
   
+        const data = await response.json();
+        return data;
+    } catch (error) {
+        throw error;
+    }
+  }
+  
+
+  export async function total(id: string) {
+    try {
+        const response = await fetch(`http://127.0.0.1:4000/totale/${id}`, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+        });
+  
+        if (!response.ok) {
+            throw new Error('Error al actualizar el estado de la orden');
+        }
+
         const data = await response.json();
         return data;
     } catch (error) {

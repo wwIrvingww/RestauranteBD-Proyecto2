@@ -29,17 +29,7 @@ const Pedido: React.FC<ContainerProps> = () => {
     return (
         <>
             <div>
-            <IonInput
-            label='Cuenta ID' 
-            style={{textAlign:'center', margin:'5%', width:'90%', display:'flex'}}
-            fill='outline' 
-            placeholder='No.' 
-            color='tertiary'
-            errorText='No se encuentra este ID'
-            onIonChange={handleInputChange}
-            >
-        
-            </IonInput>
+            
             <div><PedirButton id={id}/></div>
             
            
